@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-6">
+    <%= form_with(model: work, local: true) do |f| %>
+      <% if work.errors.any? %>
+        <div id="error_explanation" class="alert alert-warning">
+          <ul class="mb-0">
+              <% work.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+          </ul>
+        </div>
+      <% end %>  
+      <div class="form-group">
+        <%= f.label :title, 'タイトル'%>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :genre_id, 'ジャンル' %>
+        <%= f.select :genre_id, @genre_options, { include_blank: true, selected: 1 }%>
+      </div>
+      <div class="form-group">
+        <%= f.label :explanation, '説明' %>
+        <%= f.text_area :explanation, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :media_id, 'Youtube URL キー'%>
+        <%= f.text_field :media_id, class: 'form-control' %>
+      </div>
+      
+      <%= f.submit '追加', class: 'btn btn-primary' %>
+    <% end %>
+  </div>  
+</div>  

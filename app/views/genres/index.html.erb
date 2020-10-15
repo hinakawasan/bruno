@@ -1,0 +1,15 @@
+<div class="row">
+  <% @genres.each do |genre| %>
+    <div class="col-sm-6 mb-3">
+      <%= link_to genre.name, genre_path(genre), class: 'btn btn-info btn-block' %>
+      <% if current_user && current_user.admin == true  %>
+        <%= link_to 'edit', edit_genre_path(genre), class: 'btn btn-warning btn-sm' %>
+        <%= link_to 'Delete', genre, method: :delete, data: { confirm: 'You shure?' }, class: 'btn btn-danger btn-sm' %>
+      <% end %>
+      
+    </div>
+  <% end %>  
+</div> 
+  <% if current_user && current_user.admin == true %>
+    <%= link_to '新規ジャンル作成', new_genre_path, class: 'btn btn-primary btn-md'%>
+  <% end %>

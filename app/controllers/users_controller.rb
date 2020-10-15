@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy] 
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update] 
   before_action :require_user_logged_in, only: [:show, :edit, :edit, :update, :destroy]
+  
   def new
     @user = User.new
   end
@@ -24,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update
+    if @user.update(user_params)
       flash[:success] = 'マイページを更新しました。'
       redirect_to @user
     else
@@ -34,6 +36,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user.destroy
+    flash[:success] = '退会手続きが完了しました。'
+    redirect_back(fallback_location: root_path)
     
   end
   
@@ -42,7 +47,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end 
   
+  def correct_user
+    @user = current_user
+    redirect_to root_url unless @user
+  end
+  
+  
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :description)
   end
 end

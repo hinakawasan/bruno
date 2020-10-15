@@ -1,0 +1,23 @@
+<h1><%= @work.title %></h1>
+<small>ジャンル：<%= @work.genre.name %></small>
+<div class="row">
+  <div class="col-sm-6">
+    <iframe width="450" height="300" src="https://www.youtube.com/embed/<%= @work.media_id %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="col-sm-6">
+    <p><%= @work.explanation %></p>
+  </div>
+</div>
+<div class="col-sm-3">
+  <% if current_user == @work.user %>
+    <%= link_to 'Edit', edit_work_path(@work), class: 'btn btn-warning btn-md' %>
+    <%= link_to 'delete', @work, method: :delete, data: { confirm: 'You sure?' }, class: 'btn btn-danger btn-md' %>
+  <% end %>  
+</div>
+<div class="media">
+  <img class="rounded img-fluid" src="<%= gravatar_url(@work.user, { size: 100 }) %>" alt="">
+  <div class="media-body">
+    <%= link_to @work.user.name, user_path(@work.user) %>
+    <p><%= @work.user.description %></p>
+  </div>
+</div>  

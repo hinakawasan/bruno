@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_03_095842) do
+ActiveRecord::Schema.define(version: 2020_10_08_064623) do
+
+  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -22,4 +28,18 @@ ActiveRecord::Schema.define(version: 2020_10_03_095842) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "works", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "media_id"
+    t.string "explanation"
+    t.bigint "genre_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_works_on_genre_id"
+    t.index ["user_id"], name: "index_works_on_user_id"
+  end
+
+  add_foreign_key "works", "genres"
+  add_foreign_key "works", "users"
 end
