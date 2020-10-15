@@ -15,7 +15,7 @@
   </aside>
   <div class="col-sm-8">
     <h2>自己紹介</h2>
-    <p><%= @user.description %></p>
+    <p><%=safe_join(@user.description.split("\n"),tag(:br))%></p>
     
   </div>
 </div>
