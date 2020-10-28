@@ -27,6 +27,15 @@
         <%= f.text_field :media_id, class: 'form-control' %>
       </div>
       
+      <div class="form-group">
+        <%= f.label :image, '画像'%>
+        <%= f.file_field :image, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :audio, '音声ファイル'%>
+        <%= f.file_field :audio, class: 'form-control' %>
+      </div>
+      
       <%= f.submit '追加', class: 'btn btn-primary' %>
     <% end %>
   </div>  

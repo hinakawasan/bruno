@@ -57,7 +57,7 @@ class WorksController < ApplicationController
   end
   
   def work_params
-    params.require(:work).permit(:title, :media_id, :explanation, :genre_id)
+    params.require(:work).permit(:title, :media_id, :explanation, :genre_id, :image, :audio)
   end
   
   def genre_options
