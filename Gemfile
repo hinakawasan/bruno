@@ -59,3 +59,6 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-audio'
+gem 'ruby-sox'
+
+gem 'soxi-wrapper'

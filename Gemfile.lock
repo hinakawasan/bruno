@@ -213,7 +213,9 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   puma (~> 3.11)
   rails (~> 5.2.2)
+  ruby-sox
   sass-rails (~> 5.0)
+  soxi-wrapper
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

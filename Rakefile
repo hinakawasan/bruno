@@ -3,4 +3,7 @@
 
 require_relative 'config/application'
 
+directory "audio" # hogeディレクトリを作成してくれる
+
+
 Rails.application.load_tasks

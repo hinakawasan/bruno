@@ -11,6 +11,8 @@
     </div>
     <% if current_user.id == @user.id %>
       <%= link_to 'Edit Mypage', edit_user_path(@user), class: 'btn btn-primary btn-block' %>
+    <% else %>
+      <%= link_to 'chat', chat_path(@user.id,current_user.id), class: 'btn btn-primary btn-block'%>
     <% end %>
   </aside>
   <div class="col-sm-8">
@@ -18,5 +20,6 @@
     <% unless @user.description == nil %>
       <p><%=safe_join(@user.description.split("\n"),tag(:br))%></p>
     <% end %>
+    
   </div>
 </div>

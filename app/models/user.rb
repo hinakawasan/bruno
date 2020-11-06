@@ -5,4 +5,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   has_many :works
+  has_many :user_rooms
+  has_many :chats
 end

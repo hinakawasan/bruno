@@ -7,12 +7,11 @@
             <h3 class="card-title"><%= link_to work.title, work %></h3>
           </div>
           <div class="card-body">
-            <% unless work.media_id == nil && work.image != nil && work.audio != nil %>
+            <% if work.media_id != '' %>
               <iframe width="100%" height="auto" src="https://www.youtube.com/embed/<%= work.media_id %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <% elsif work.media_id == nil && work.image != nil && work.audio == nil %>
-              <% image_tag work.image %>
-            <% elsif work.media_id == nil && work.image == nil && work.audio != nil %>
-              <% audio_tag work.audio %>
+            <% elsif work.image != '' %>
+              <img width="100%" height="auto" src=<%= work.image.url %> >
+            
             <% end %>  
           </div>
         </div>

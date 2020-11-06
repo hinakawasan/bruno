@@ -17,6 +17,7 @@ class WorksController < ApplicationController
   
   def create
     @work = current_user.works.build(work_params)
+  
     if @work.save
       flash[:success] = 'ポートフォリオを公開しました。'
       redirect_to work_path(@work)
@@ -42,7 +43,7 @@ class WorksController < ApplicationController
   def destroy
     @work.destroy
     flash[:success] = 'ポートフォリオを削除しました。'
-    redirect_back(fallback_location: root_path)
+    redirect_to root_path
   end
   
   private
@@ -56,8 +57,11 @@ class WorksController < ApplicationController
     redirect_to root_url unless @work
   end
   
+ 
+  
+  
   def work_params
-    params.require(:work).permit(:title, :media_id, :explanation, :genre_id, :image, :audio)
+    params.require(:work).permit(:title, :media_id, :explanation, :genre_id, :image, :url)
   end
   
   def genre_options

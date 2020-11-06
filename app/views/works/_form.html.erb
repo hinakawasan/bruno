@@ -11,32 +11,30 @@
         </div>
       <% end %>  
       <div class="form-group">
-        <%= f.label :title, 'タイトル'%>
+        <%= f.label :title, 'Title'%>
         <%= f.text_field :title, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= f.label :genre_id, 'ジャンル' %>
+        <%= f.label :genre_id, 'Genre' %>
         <%= f.select :genre_id, @genre_options, { include_blank: true, selected: 1 }%>
       </div>
       <div class="form-group">
-        <%= f.label :explanation, '説明' %>
+        <%= f.label :explanation, 'Description' %>
         <%= f.text_area :explanation, rows: 15, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= f.label :media_id, 'Youtube URL キー'%>
+        <%= f.label :media_id, 'Youtube URL key'%>
         <%= f.text_field :media_id, class: 'form-control' %>
       </div>
       
       <div class="form-group">
-        <%= f.label :image, '画像'%>
+        <%= f.label :image, 'Image'%>
         <%= f.file_field :image, class: 'form-control' %>
       </div>
-      <div class="form-group">
-        <%= f.label :audio, '音声ファイル'%>
-        <%= f.file_field :audio, class: 'form-control' %>
-      </div>
       
-      <%= f.submit '追加', class: 'btn btn-primary' %>
+      
+      
+      <%= f.submit 'Post', class: 'btn btn-primary' %>
     <% end %>
   </div>  
 </div>  
