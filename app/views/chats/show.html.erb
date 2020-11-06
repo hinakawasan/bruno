@@ -1,29 +1,32 @@
 <div class="row">
   <div class="col-6">
     <%= form_with model: @chat do |f| %>
-    <div class="form-group">
-      <%= f.label :message, 'Message' %>
-      <%= f.text_area :message, class: 'form-control' %>
-    </div>
-    
-    <%= f.hidden_field :room_id %>
-    <%= f.submit 'Send', class: 'btn btn-success btn-block mb-3' %>
-<% end %>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Message</td>
-        </tr>
-    </thead>
-    <tbody>
-        <% @chats.each do |chat| %>
-            <tr>
-                <td><%= chat.user.name %></td>
-                <td><%= chat.message %></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+      <div class="form-group">
+        <%= f.label :message, 'Message' %>
+        <%= f.text_area :message, class: 'form-control' %>
+      </div>
+      
+      <%= f.hidden_field :room_id %>
+      <%= f.submit 'Send', class: 'btn btn-success btn-block mb-3' %>
+    <% end %>
   </div>
+   <div class="col-sm-6">
+     <table class="table table-striped">
+      <thead>
+          <tr>
+              <td>Name</td>
+              <td>Message</td>
+          </tr>
+      </thead>
+      <tbody>
+          <% @chats.each do |chat| %>
+              <tr>
+                  <td><img src="<%= gravatar_url(chat.user, { size: 30 }) %>" alt=""></td>
+                  <td><%= chat.message %></td>
+              </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+  
 </div>
